@@ -26,3 +26,11 @@ npm run build
 ```
 npm i vue-router@3.4.9
 ```
+
+### затык с multi-word-component-names
+
+1:1 error Component name "Navbar" should always be multi-word vue/multi-word-component-names. Read the documentation: https://eslint.vuejs.org/rules/multi-word-component-names.html
+
+```
+rename "Navbar"
+```
