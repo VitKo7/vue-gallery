@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <PhotoForm />
+        <PhotoForm @addPhoto="addPhoto" />
         <v-row>
             <PhotoGallery
                 v-for="photo in photos"
@@ -36,6 +36,9 @@ export default {
                         `https://jsonplaceholder.typicode.com/photos?_limit=10`
                     )
                     .then((result) => (this.photos = result.data));
+            },
+            addPhoto(photo) {
+                this.photos.push(photo);
             },
         },
     }),
