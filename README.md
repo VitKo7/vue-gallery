@@ -34,3 +34,11 @@ npm i vue-router@3.4.9
 ```
 rename "Navbar"
 ```
+
+### v-for
+
+для v-for ВСЕГДА НУЖНО указывать ключ с уникальным названием: v-bind:key = "photo.id"
+
+например:
+вместо: <Photo v-for="photo in photos" v-bind:photo="photo" />
+писать: <Photo v-for="photo in photos" v-bind:photo="photo" :key="photo.id"/>
