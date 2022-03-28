@@ -1,23 +1,14 @@
 <template>
     <v-container>
-        <!-- <PhotoForm v-if="photos.length < 11" @addPhoto="addPhoto" />
-        <div v-else>Ви не можете додати більше фото</div> -->
-        <!-- hide section upon the condition -->
-
-        <!-- <PhotoForm v-show="dialogVisible" @addPhoto="addPhoto" /> -->
-        <!-- v-show - always stays in DOM-tree -->
-
         <PhotoForm @addPhoto="addPhoto" />
-
         <v-row>
             <PhotoGallery
-                v-for="photo in photos"
+                v-for="photo in $store.getters.getAllPhotos"
                 v-bind:photo="photo"
                 :key="photo.id"
-                @openPhoto="openPhoto"
             />
         </v-row>
-        <PhotoDialog :photo="currentPhoto" v-model="dialogVisible" />
+        <PhotoDialog />
     </v-container>
 </template>
 
@@ -25,6 +16,7 @@
 import PhotoGallery from '../components/photo/PhotoGallery';
 import PhotoForm from '../components/photo/PhotoForm';
 import PhotoDialog from '../components/photo/PhotoDialog.vue';
+import { mapActions } from 'vuex';
 
 export default {
     components: {
@@ -33,26 +25,13 @@ export default {
         PhotoForm,
     },
     data: () => ({
-        // photos: [
-        //     { id: 1, title: 'фото 1' },
-        //     { id: 2, title: 'фото 2' },
-        //     { id: 3, title: 'фото 3' },
-        //     { id: 4, title: 'фото 4' },
-        // ],
         photos: [],
-        currentPhoto: {},
-        dialogVisible: false,
     }),
     mounted() {
-        this.fetchToDo();
+        this.fetchPhotos();
     },
     methods: {
-        fetchToDo() {
-            // async request for photos when component is made up;
-            this.axios
-                .get(`https://jsonplaceholder.typicode.com/photos?_limit=10`)
-                .then((result) => (this.photos = result.data));
-        },
+        ...mapActions(['fetchPhotos']),
         addPhoto(photo) {
             this.photos.push(photo);
         },
