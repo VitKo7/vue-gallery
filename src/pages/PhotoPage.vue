@@ -1,6 +1,14 @@
 <template>
     <v-container>
+        <!-- <PhotoForm v-if="photos.length < 11" @addPhoto="addPhoto" />
+        <div v-else>Ви не можете додати більше фото</div> -->
+        <!-- hide section upon the condition -->
+
+        <!-- <PhotoForm v-show="dialogVisible" @addPhoto="addPhoto" /> -->
+        <!-- v-show - always stays in DOM-tree -->
+
         <PhotoForm @addPhoto="addPhoto" />
+
         <v-row>
             <PhotoGallery
                 v-for="photo in photos"
