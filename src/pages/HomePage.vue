@@ -7,6 +7,7 @@
                     <h2 class="subtitle">
                         Make sure you check out our upcoming events below
                     </h2>
+
                     <div class="button-block">
                         <button class="button is-xl is-dark">
                             Sign Up to Browse Events
@@ -49,11 +50,15 @@ export default {
     margin-right: auto;
     width: 100%;
     position: absolute;
-    bottom: -150px;
+    bottom: 5px;
     .button {
         margin-right: 50px;
-        padding-left: 50px;
-        padding-right: 50px;
+        padding: 5px 30px;
+        border-style: solid;
+
+        background-color: #eeddff;
+        border: 1px solid #7922cc;
+        border-radius: 280px/200px;
     }
     .welcome {
         width: 400px;
